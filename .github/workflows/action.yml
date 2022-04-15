@@ -12,3 +12,9 @@ jobs:
       with:
         fpm_args: './build'
         fpm_opts: '--debug -n consul_helper -v 0.0.1 -m help@mailinator.com --url https://google.com --description "a helper" --prefix /usr/local/bin -t rpm -s dir'
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+        name: consul_helper
+        path: consul_helper-0.0.1-1.x86_64.rpm
+        retention-days: 10
