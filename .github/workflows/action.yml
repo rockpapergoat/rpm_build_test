@@ -1,0 +1,14 @@
+name: Example workflow yml
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Package
+      uses: bpicode/github-action-fpm@master
+      with:
+        fpm_args: './build'
+        fpm_opts: '--debug -n consul_helper -v 0.0.1 -m help@mailinator.com --url https://google.com --description "a helper" --prefix /usr/local/bin -t rpm -s dir'
