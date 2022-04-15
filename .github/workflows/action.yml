@@ -18,6 +18,10 @@ jobs:
         name: consul_helper
         path: consul_helper-0.0.1-1.x86_64.rpm
         retention-days: 10
+    - name: Create GitHub Release
+        uses: softprops/action-gh-release@v0.1.14
+        with:
+          target_commitish: ${{ github.sha }}
     - name: Build
         run: echo ${{ github.sha }} > Release.txt
     - name: Test
